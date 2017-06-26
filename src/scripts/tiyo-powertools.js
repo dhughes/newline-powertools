@@ -7,15 +7,11 @@
     // add a divider between lessons
     let first = true;
     lessons.forEach(lesson => {
-      if (first) {
-        first = !first;
-      } else {
-        // const parent = lesson.parentNode;
-        const hr = document.createElement('hr');
-        hr.className = 'powertools-separator';
+      // const parent = lesson.parentNode;
+      const hr = document.createElement('hr');
+      hr.className = 'powertools-separator';
 
-        lesson.append(hr);
-      }
+      lesson.insertBefore(hr, lesson.firstChild);
     });
   })();
 
@@ -23,20 +19,48 @@
     document
       .querySelectorAll('body.admin div[data-content-gid], body.admin div[data-additional-content-gid]')
       .forEach(content => content.addEventListener('dblclick', collapseContent));
-    //content.addEventLister('click', collapseContent)
+  })();
+
+  (function collapseCollapsedContent() {
+    let collapsedContent = localStorage.getItem('collapsedContent')
+      ? JSON.parse(localStorage.getItem('collapsedContent'))
+      : [];
+
+    document.querySelectorAll('div.eo').forEach(content => {
+      const gidAttr = Object.keys(content.attributes).reduce(
+        (acc, i) => (content.attributes[i].name.endsWith('-gid') ? content.attributes[i].value : acc),
+        ''
+      );
+
+      if (collapsedContent.includes(gidAttr)) {
+        content.className += ' powertools-collapse';
+      }
+    });
   })();
 
   function collapseContent(event) {
     let content = getClosest(event.target, 'div[data-content-gid], div[data-additional-content-gid]');
+    let collapsedContent = localStorage.getItem('collapsedContent')
+      ? JSON.parse(localStorage.getItem('collapsedContent'))
+      : [];
+
+    let gidAttr = Object.keys(content.attributes).reduce(
+      (acc, i) => (content.attributes[i].name.endsWith('-gid') ? content.attributes[i].value : acc),
+      ''
+    );
+
     if (content.className.includes('powertools-collapse')) {
       // remove the class
       content.className = content.className.replace('powertools-collapse', '');
+      collapsedContent = collapsedContent.filter(gid => gid !== gidAttr);
     } else {
       // add the class
       content.className += ' powertools-collapse';
+      collapsedContent.push(gidAttr);
     }
 
-    console.log(content);
+    // save the collapsed items
+    localStorage.setItem('collapsedContent', JSON.stringify(collapsedContent));
   }
 
   // getClosest is stolen from: https://gomakethings.com/climbing-up-and-down-the-dom-tree-with-vanilla-javascript/
@@ -57,9 +81,9 @@
         Element.prototype.oMatchesSelector ||
         Element.prototype.webkitMatchesSelector ||
         function(s) {
-          var matches = (this.document || this.ownerDocument).querySelectorAll(s), i = matches.length;
-          while (--i >= 0 && matches.item(i) !== this) {
-          }
+          var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+            i = matches.length;
+          while (--i >= 0 && matches.item(i) !== this) {}
           return i > -1;
         };
     }

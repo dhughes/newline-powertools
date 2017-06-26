@@ -1,34 +1,38 @@
-
-body.admin div[data-content-gid*=Activity] {
-  margin-left:3em;
+body.admin div[data-content-gid*=Activity],
+body.admin div[data-additional-content-gid*=Supplemental],
+body.admin div[data-additional-content-gid*=Activity] {
+  margin-left: 3em;
 }
 
 body.admin div[data-content-gid*=Project] {
   margin: 1.5em auto 1.5em 3em;
 }
 
-.powertools-separator{
+.powertools-separator {
   height: 0.25em;
   background-color: gray;
   border: 0;
 }
 
-.powertools-collapse{
+.powertools-collapse {
   max-height: 3em;
   overflow: hidden;
-  margin-top: 0!important;
+  margin-top: 0 !important;
 }
 
+div[data-content-gid*=Lesson].powertools-collapse {
+  max-height: 4.75em;
+}
 
-.powertools-collapse .pt-3{
-  padding-top: 0.25em!important;
+.powertools-collapse .pt-3 {
+  padding-top: 0.25em !important;
   background-color: #EEEEEE;
 }
 
-.powertools-collapse dt{
+.powertools-collapse dt {
   display: none;
 }
 
-.powertools-collapse .scheduler-card__actions{
+.powertools-collapse .scheduler-card__actions {
   margin-top: 0;
 }
