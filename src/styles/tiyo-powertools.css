@@ -20,6 +20,10 @@ body.admin div[data-content-gid*=Project] {
   margin-top: 0 !important;
 }
 
+.powertools-collapse .scheduler-card__actions:not([title=Preview]) {
+  display: none;
+}
+
 div[data-content-gid*=Lesson].powertools-collapse {
   max-height: 4.75em;
 }
