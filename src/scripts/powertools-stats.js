@@ -158,7 +158,7 @@ function collectStats() {
             responses.map(response => ({
               name: response.dom.querySelector('h1.mt-2').textContent,
               link: response.url,
-              grade: response.dom.querySelector('.card-block h4').textContent,
+              grade: response.dom.querySelector('#projects-9 .card-block h4').textContent,
               projects: getDailyAndWeeklyProjectBreakdown(response.dom)
             }))
           )
