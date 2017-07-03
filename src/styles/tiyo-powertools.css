@@ -1,11 +1,103 @@
 body.admin div[data-content-gid*=Activity],
 body.admin div[data-additional-content-gid*=Supplemental],
-body.admin div[data-additional-content-gid*=Activity] {
+body.admin div[data-additional-content-gid*=Activity],
+body.admin div[data-content-gid*=Supplemental] {
   margin-left: 3em;
 }
 
 body.admin div[data-content-gid*=Project] {
   margin: 1.5em auto 1.5em 3em;
+}
+
+.toggle {
+  width: 1em;
+  height: 1em;
+  float: left;
+  margin-right: 0.5em;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAASAAAAEgARslrPgAAAIhJREFUSMftlbsNgDAMRC/sEMT+FaxDCsZ5NEGCkIifQ4G4xpKLe7EtXaRfbwnwQA94CzMAEvMQ24MpIJqPsTUBnRmginkCCKv6fPcZwOHL3V1A0dC5jWdjNtZntbvBlf2eUfUb7AAuSlIrKVShJtmyVJ47K58tZoBStlgChly2WE9g82n8OqsZRsPwpRABrCMAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDYtMzBUMTg6NDk6MDMrMDA6MDBrzkHWAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTA2LTMwVDE4OjQ5OjAzKzAwOjAwGpP5agAAACh0RVh0c3ZnOmJhc2UtdXJpAGZpbGU6Ly8vdG1wL21hZ2ljay1oTFFCMWRBYZiPoEUAAAAASUVORK5CYII=');
+}
+
+.off .toggle {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAASAAAAEgARslrPgAAAIpJREFUSMftlTEOgCAMRVvvgPH+k1xHBo/zHUQtRIJiO8lbSJrwf1sKEHUqcOtGACiKMp+6g3UFzQYcIaKRiIJJdgAcgICdY8V35Ut8iZorgEnN4E48xtUMvGiLE3HVCmYp/mNU25EfUjbnXtWgNIoqBibimYG8/nqjiBSVzJP/4Okb/wbz/6BTZQMvMPClwyLkJgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wNi0zMFQxODozNDoyNyswMDowMAFh/IsAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDYtMzBUMTg6MzQ6MjcrMDA6MDBwPEQ3AAAAKHRFWHRzdmc6YmFzZS11cmkAZmlsZTovLy90bXAvbWFnaWNrLUxGQWpwZWtKUhmV/gAAAABJRU5ErkJggg==');
+}
+
+.refresh {
+  width: 1em;
+  height: 1em;
+  float: left;
+  margin-right: 0.5em;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAASAAAAEgARslrPgAAASFJREFUSMft1D1KA1EUxfFBNCBqoZsIJIJBRcRWXJH7UKOmcAG29oJY6QIsogswiI02URJB+dncgRBmJpMExCIXHgzzzjn/93FnkmRW/7pQQxNtfMZ4whnWpwlewCm+5dcPWqhMEn4dIT0cYwuLMbZjV73Q3I4Fie3DMzYKdA10QtsqG16PY+kVhQ9B+uGplwE0Y0XNCXY82hPdAjtjAPbC0y4j/gjx0hiAtfB0s+bnhvU57wcDq3hJezVJkreYWh5o4XusZJkfQ7A7YtU1vOZ8H3eZ4WFML/m8xNFkQfLDw5S2aR+bY0KKwwdMadt10CgJuSoVHoYKbgLyhQvsYzU65gCHmC8VWAAZ9bO7nBgwdCcneMA7uvF8hOrUgFn9Sf0CK+cJE5lcXUsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDYtMzBUMTk6MTY6NDQrMDA6MDB36V/oAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTA2LTMwVDE5OjE2OjQ0KzAwOjAwBrTnVAAAACh0RVh0c3ZnOmJhc2UtdXJpAGZpbGU6Ly8vdG1wL21hZ2ljay10YU1ORXB0bfjgQWYAAAAASUVORK5CYII=');
+}
+
+.powertools-gradebook h1 {
+  font-size: 1.25rem;
+  background-color: black;
+  background: linear-gradient(to bottom, #000000 0%, #444444 50%, #000000 100%);
+  color: white;
+  padding: 0.5rem;
+}
+
+.powertools-gradebook table {
+  border-collapse: collapse;
+}
+
+.off table {
+  display: none;
+}
+
+.powertools-gradebook table thead {
+  background-color: #444444;
+  color: white;
+}
+
+.powertools-gradebook table thead a {
+  color: white;
+}
+
+.powertools-gradebook table thead a:hover {
+  text-decoration: underline;
+}
+
+.powertools-gradebook table tbody td:first-child {
+  text-align: right;
+}
+
+.powertools-gradebook table tbody tr:nth-child(2n + 1) {
+  background-color: #E5E5E5;
+}
+
+.powertools-gradebook td.CS {
+  background-color: lightgreen;
+}
+
+.powertools-gradebook td.EE {
+  background-color: lightgreen;
+  font-weight: bold;
+}
+
+.powertools-gradebook td.CU {
+  background-color: pink;
+}
+
+.powertools-gradebook td.In {
+  background-color: pink;
+}
+
+.powertools-gradebook td.NG {
+  background-color: #AAAAAA;
+}
+
+.powertools-gradebook .Weekly {
+  font-weight: bolder;
+}
+
+.powertools-gradebook th, .powertools-gradebook td {
+  border: 1px solid black;
+  width: 1.5em;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0.2em 0.5em;
+  font-weight: normal;
 }
 
 .powertools-separator {

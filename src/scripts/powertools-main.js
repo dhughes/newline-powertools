@@ -15,12 +15,14 @@
     });
   })();
 
+  // this turns on the ability to collapse content items in the admin
   (function enableCollapseContent() {
     document
       .querySelectorAll('body.admin div[data-content-gid], body.admin div[data-additional-content-gid]')
       .forEach(content => content.addEventListener('dblclick', collapseContent));
   })();
 
+  // this re-collapses content items in the admin
   (function collapseCollapsedContent() {
     let collapsedContent = localStorage.getItem('collapsedContent')
       ? JSON.parse(localStorage.getItem('collapsedContent'))
@@ -38,6 +40,7 @@
     });
   })();
 
+  // this is what collapses content
   function collapseContent(event) {
     let content = getClosest(event.target, 'div[data-content-gid], div[data-additional-content-gid]');
     let collapsedContent = localStorage.getItem('collapsedContent')
@@ -64,13 +67,6 @@
   }
 
   // getClosest is stolen from: https://gomakethings.com/climbing-up-and-down-the-dom-tree-with-vanilla-javascript/
-  /**
- * Get the closest matching element up the DOM tree.
- * @private
- * @param  {Element} elem     Starting element
- * @param  {String}  selector Selector to match against
- * @return {Boolean|Element}  Returns null if not match found
- */
   function getClosest(elem, selector) {
     // Element.matches() polyfill
     if (!Element.prototype.matches) {

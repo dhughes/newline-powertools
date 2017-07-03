@@ -3,7 +3,7 @@
 
   "name": "Newline Powertools",
   "description": "A plugin that provides useful 'powertools' for working with Newline.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "icons": {
     "16": "src/img/TIY-logo-thumb-16.png",
     "48": "src/img/TIY-logo-thumb-48.png",
@@ -23,7 +23,8 @@
         "https://newline.theironyard.com/*"
       ],
       "js" : [
-        "src/scripts/tiyo-powertools.js"
+        "src/scripts/powertools-main.js",
+        "src/scripts/powertools-stats.js"
       ],
       "css" : [
         "src/styles/tiyo-powertools.css"
