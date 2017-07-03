@@ -34,7 +34,8 @@ function renderGradebookStudentProjectCells(student, projects) {
   return projects
     .map(project => {
       const grade = formatGrade(student.projects[project.name].status);
-      return `<td class="${grade} ${project.type}">${grade}</td>`;
+      return `<td class="${grade} ${project.type}"><a class="submission" href="${student.projects[project.name]
+        .link}">${grade}</a></td>`;
     })
     .join('');
 }
@@ -146,7 +147,7 @@ function collectStats() {
           Promise.all(
             responses.map(response =>
               response.text().then(html => ({
-                url: response.url,
+                link: response.url,
                 dom: getAsNode(html)
               }))
             )
@@ -175,6 +176,16 @@ function collectStats() {
 
 // this flattens the project and student data and extracts the projects from the students array
 function normalize(students) {
+  // sort the students (in place)
+  students.sort((a, b) => {
+    if (a.name > b.name) {
+      return 1;
+    } else if (a.name == b.name) {
+      return 0;
+    } else {
+      return -1;
+    }
+  });
   // get the set of all projects from all students. There will be many, many, duplicate projects we need to clean up
   let projects = students.map(student => student.projects);
   // flatten our array of projects

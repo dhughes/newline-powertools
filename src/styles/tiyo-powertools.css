@@ -14,11 +14,11 @@ body.admin div[data-content-gid*=Project] {
   height: 1em;
   float: left;
   margin-right: 0.5em;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAASAAAAEgARslrPgAAAIhJREFUSMftlbsNgDAMRC/sEMT+FaxDCsZ5NEGCkIifQ4G4xpKLe7EtXaRfbwnwQA94CzMAEvMQ24MpIJqPsTUBnRmginkCCKv6fPcZwOHL3V1A0dC5jWdjNtZntbvBlf2eUfUb7AAuSlIrKVShJtmyVJ47K58tZoBStlgChly2WE9g82n8OqsZRsPwpRABrCMAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDYtMzBUMTg6NDk6MDMrMDA6MDBrzkHWAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTA2LTMwVDE4OjQ5OjAzKzAwOjAwGpP5agAAACh0RVh0c3ZnOmJhc2UtdXJpAGZpbGU6Ly8vdG1wL21hZ2ljay1oTFFCMWRBYZiPoEUAAAAASUVORK5CYII=');
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAASAAAAEgARslrPgAAAIRJREFUSMdjYBgFdASiDAwMK6A0xeA/FCMbfhkqtpLaFogyMDBcgvKvMzAwSFDTApoYjmzBZSSaKmGPbgFBlzNSYAFRZjJR01vDE2CLA6LDlxhA8zjAZgEjFIsxQNI3TQBy2QKj/1NkIprh6NmfahbgKluoZsFKBuxlC1V9QLVKYxQQBQDqMy5cCyT8XAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wNy0wM1QxNzoyMTowMCswMDowMCuEa+cAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDctMDNUMTc6MjE6MDArMDA6MDBa2dNbAAAAKHRFWHRzdmc6YmFzZS11cmkAZmlsZTovLy90bXAvbWFnaWNrLVpsb1FvVFZ1mQqLvAAAAABJRU5ErkJggg==');
 }
 
 .off .toggle {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAASAAAAEgARslrPgAAAIpJREFUSMftlTEOgCAMRVvvgPH+k1xHBo/zHUQtRIJiO8lbSJrwf1sKEHUqcOtGACiKMp+6g3UFzQYcIaKRiIJJdgAcgICdY8V35Ut8iZorgEnN4E48xtUMvGiLE3HVCmYp/mNU25EfUjbnXtWgNIoqBibimYG8/nqjiBSVzJP/4Okb/wbz/6BTZQMvMPClwyLkJgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wNi0zMFQxODozNDoyNyswMDowMAFh/IsAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDYtMzBUMTg6MzQ6MjcrMDA6MDBwPEQ3AAAAKHRFWHRzdmc6YmFzZS11cmkAZmlsZTovLy90bXAvbWFnaWNrLUxGQWpwZWtKUhmV/gAAAABJRU5ErkJggg==');
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAASAAAAEgARslrPgAAAIBJREFUSMdjYBgFBAAjBXr/E2MuE619QIkFjFAsxsDAcJlWDhSFGv4fif5PkYlohl+CGnidgYFBgpoWYDOcgZoWrEQKFlEkcar6YAWa4SMYUDU40CMJOZ2vpLYFuJIiVSygieHIFiBnf6omxf9ImCouR68PiCrjSQE0rw9GAUEAAAePLlw8XRGbAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTA3LTAzVDE3OjIyOjAwKzAwOjAwwLPQ5AAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wNy0wM1QxNzoyMjowMCswMDowMLHuaFgAAAAodEVYdHN2ZzpiYXNlLXVyaQBmaWxlOi8vL3RtcC9tYWdpY2stdUtNVmQ2VEnKCQIzAAAAAElFTkSuQmCC');
 }
 
 .refresh {
@@ -26,19 +26,26 @@ body.admin div[data-content-gid*=Project] {
   height: 1em;
   float: left;
   margin-right: 0.5em;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAASAAAAEgARslrPgAAASFJREFUSMft1D1KA1EUxfFBNCBqoZsIJIJBRcRWXJH7UKOmcAG29oJY6QIsogswiI02URJB+dncgRBmJpMExCIXHgzzzjn/93FnkmRW/7pQQxNtfMZ4whnWpwlewCm+5dcPWqhMEn4dIT0cYwuLMbZjV73Q3I4Fie3DMzYKdA10QtsqG16PY+kVhQ9B+uGplwE0Y0XNCXY82hPdAjtjAPbC0y4j/gjx0hiAtfB0s+bnhvU57wcDq3hJezVJkreYWh5o4XusZJkfQ7A7YtU1vOZ8H3eZ4WFML/m8xNFkQfLDw5S2aR+bY0KKwwdMadt10CgJuSoVHoYKbgLyhQvsYzU65gCHmC8VWAAZ9bO7nBgwdCcneMA7uvF8hOrUgFn9Sf0CK+cJE5lcXUsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDYtMzBUMTk6MTY6NDQrMDA6MDB36V/oAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTA2LTMwVDE5OjE2OjQ0KzAwOjAwBrTnVAAAACh0RVh0c3ZnOmJhc2UtdXJpAGZpbGU6Ly8vdG1wL21hZ2ljay10YU1ORXB0bfjgQWYAAAAASUVORK5CYII=');
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAASAAAAEgARslrPgAAAQ9JREFUSMft1L0uBHEUBfBfgUREwUtIdiUEEdGKJ/IeWGsLD6DVS0TFA2yxPICNqDRLdiVkFXMnFGbmP7sNiZPc7nzcO3Nm+MdvRwMt9PAac482VqcxnsUJ3jEumA90MDeJ+WWYDHGETczHbMVVw+Bc1w1ph/ABayW8dfSD20k1b8ZjGVaYfw8ZhaaZEtCKjVoTXJyk6QV5u0bAbmh6KeSXIC/UCFgOzSCFPAjyYglnBY+K6zvGbZHHXRB2KhZp4KnA/KZswfwlnyZc+1NIqTlfNR1ho2ZIpXmOvHZ9Wc9TQi5Szck++6sIecMZ9rAka8w+DjCTalgUUvWzO58mIEcTx+jiWVbjLg5ldf3HH8An6oFgol5PAfIAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDctMDNUMTc6MjM6MjErMDA6MDDLI7cTAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTA3LTAzVDE3OjIzOjIxKzAwOjAwun4PrwAAACh0RVh0c3ZnOmJhc2UtdXJpAGZpbGU6Ly8vdG1wL21hZ2ljay1JZnVSRWFBTJ0K3agAAAAASUVORK5CYII=');
+}
+
+.powertools-gradebook {
+  border-top: 2px solid #464A4C;
+  border-left: 14px solid #464A4C;
 }
 
 .powertools-gradebook h1 {
   font-size: 1.25rem;
-  background-color: black;
-  background: linear-gradient(to bottom, #000000 0%, #444444 50%, #000000 100%);
-  color: white;
+  background-color: #EEEEEE;
+  color: black;
   padding: 0.5rem;
 }
 
 .powertools-gradebook table {
   border-collapse: collapse;
+  font-size: 0.8em;
+  margin-left: 1em;
+  margin-top: 0.5em;
 }
 
 .off table {
@@ -46,8 +53,12 @@ body.admin div[data-content-gid*=Project] {
 }
 
 .powertools-gradebook table thead {
-  background-color: #444444;
+  background-color: #555555;
   color: white;
+}
+
+.powertools-gradebook table thead .Weekly {
+  background-color: #333333;
 }
 
 .powertools-gradebook table thead a {
@@ -66,25 +77,47 @@ body.admin div[data-content-gid*=Project] {
   background-color: #E5E5E5;
 }
 
-.powertools-gradebook td.CS {
-  background-color: lightgreen;
+.powertools-gradebook tr:nth-child(2n + 0) td.Weekly {
+  background-color: #DDDDDD;
+}
+
+.powertools-gradebook table tbody tr:nth-child(2n + 1) td.Weekly {
+  background-color: #C3C3C3;
+}
+
+.powertools-gradebook td a.submission {
+  color: black;
+}
+
+.powertools-gradebook td a.submission:hover {
+  text-decoration: underline;
+}
+
+.powertools-gradebook td.CS, .powertools-gradebook td.EE {
+  background-color: lightgreen !important;
+}
+
+.powertools-gradebook td.CS.Weekly {
+  background-color: #70DD80 !important;
 }
 
 .powertools-gradebook td.EE {
-  background-color: lightgreen;
   font-weight: bold;
 }
 
-.powertools-gradebook td.CU {
-  background-color: pink;
+.powertools-gradebook td.CU, .powertools-gradebook td.In {
+  background-color: pink !important;
 }
 
-.powertools-gradebook td.In {
-  background-color: pink;
+.powertools-gradebook td.CU.Weekly, .powertools-gradebook td.In.Weekly {
+  background-color: #EEB0BA !important;
 }
 
 .powertools-gradebook td.NG {
-  background-color: #AAAAAA;
+  background-color: #AAAAAA !important;
+}
+.powertools-gradebook td.NG.Weekly {
+  background-color: #999999 !important;
 }
 
 .powertools-gradebook .Weekly {
