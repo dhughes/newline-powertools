@@ -50,13 +50,15 @@ function loadGradebookData() {
                     // grab the HTML from the response
                     return response.text();
                   } else {
-                    throw 'Error getting a student.';
+                    throw "Error getting a student's submissions.";
                   }
                 })
                 // parse the content and extract the student submissions
                 .then(text => Object.assign({}, student, { submissions: getStudentSubmissions(getAsNode(text)) }))
             )
           )
+            // get student grades
+            .then(students => Promise.all(students.map(student => getStudentGrade(student))))
             // collect all of this together
             .then(students => ({
               projects,
@@ -68,6 +70,27 @@ function loadGradebookData() {
     .then(results => localStorage.setItem('powertools-gradebook', JSON.stringify(results)))
     // render the gradebookData
     .then(() => renderGradebook());
+}
+
+function getStudentGrade(student) {
+  return (
+    loadLink(student.link)
+      //get the response
+      .then(response => {
+        if (response.status === 200) {
+          // grab the HTML from the response
+          return response.text();
+        } else {
+          throw "Error getting a student's grade.";
+        }
+      })
+      // parse the content and extract the student submissions
+      .then(text =>
+        Object.assign({}, student, {
+          grade: getAsNode(text).querySelector('#stats > div:nth-child(4) dd h5').textContent
+        })
+      )
+  );
 }
 
 function getStudentSubmissions(dom) {

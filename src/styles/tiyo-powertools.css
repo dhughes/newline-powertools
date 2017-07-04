@@ -104,7 +104,7 @@ div[data-content-gid*=Lesson].powertools-collapse {
 
 #gradebook-container table th, #gradebook-container table td {
   border: 1px solid black;
-  width: 1.5em;
+  width: 2.5em;
   text-align: center;
   white-space: nowrap;
   padding: 0.2em 0.5em;

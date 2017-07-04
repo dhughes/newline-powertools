@@ -68,6 +68,7 @@ function renderGradebook() {
     gradebookContainer.appendChild(getAsNode(`<div class="gradebook-data">Gradebook data not loaded!</div>`));
   } else {
     data = JSON.parse(data);
+    console.log(data);
     gradebookContainer.appendChild(getAsNode(renderGradebookTable(data.students, data.projects)));
   }
 }
