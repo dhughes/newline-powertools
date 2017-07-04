@@ -41,10 +41,10 @@ function toggleGradebookVisibility() {
 
   if (gradebookData.className.split(' ').includes('off')) {
     gradebookData.className = '';
-    localStorage.setItem('powertools-gradebook-visible', 'false');
+    localStorage.setItem('powertools-gradebook-visible', 'true');
   } else {
     gradebookData.className = 'off';
-    localStorage.setItem('powertools-gradebook-visible', 'true');
+    localStorage.setItem('powertools-gradebook-visible', 'false');
   }
 }
 
@@ -94,7 +94,9 @@ function renderGradebookTable(students, projects) {
 
 function createGradebookContainer() {
   return getAsNode(`
-    <div id="gradebook-container"></div>
+    <div id="gradebook-container"
+      class="${localStorage.getItem('powertools-gradebook-visible') === 'false' ? 'off' : ''}">
+    </div>
   `);
 }
 
