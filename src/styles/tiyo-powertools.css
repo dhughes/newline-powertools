@@ -30,7 +30,7 @@ div[data-content-gid*=Lesson].powertools-collapse {
 
 .powertools-collapse .pt-3 {
   padding-top: 0.25em !important;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }
 
 .powertools-collapse dt {
@@ -70,13 +70,14 @@ div[data-content-gid*=Lesson].powertools-collapse {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzJweCIgIGhlaWdodD0iMzJweCIgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIiBjbGFzcz0ibGRzLWJhci1jaGFydCI+CiAgICA8ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAgNTApIj4KICAgICAgPHJlY3QgbmctYXR0ci14PSJ7e2NvbmZpZy54MX19IiB5PSIxNSIgbmctYXR0ci13aWR0aD0ie3tjb25maWcud2lkdGh9fSIgaGVpZ2h0PSIzMS45MjY2IiBmaWxsPSIjMjdjOWZmIiB4PSIxMi41IiB3aWR0aD0iMTUiPgogICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImhlaWdodCIgY2FsY01vZGU9InNwbGluZSIgdmFsdWVzPSI1MDs3MDszMDs1MCIga2V5VGltZXM9IjA7MC4zMzswLjY2OzEiIGR1cj0iMSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDE7MC41IDAgMC41IDE7MC41IDAgMC41IDEiIGJlZ2luPSItMC40cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICAgICAgPC9yZWN0PgogICAgICA8cmVjdCBuZy1hdHRyLXg9Int7Y29uZmlnLngyfX0iIHk9IjE1IiBuZy1hdHRyLXdpZHRoPSJ7e2NvbmZpZy53aWR0aH19IiBoZWlnaHQ9IjY2Ljk3ODciIGZpbGw9IiM0ZjRkYmIiIHg9IjMyLjUiIHdpZHRoPSIxNSI+CiAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iaGVpZ2h0IiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjUwOzcwOzMwOzUwIiBrZXlUaW1lcz0iMDswLjMzOzAuNjY7MSIgZHVyPSIxIiBrZXlTcGxpbmVzPSIwLjUgMCAwLjUgMTswLjUgMCAwLjUgMTswLjUgMCAwLjUgMSIgYmVnaW49Ii0wLjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogICAgICA8L3JlY3Q+CiAgICAgIDxyZWN0IG5nLWF0dHIteD0ie3tjb25maWcueDN9fSIgeT0iMTUiIG5nLWF0dHItd2lkdGg9Int7Y29uZmlnLndpZHRofX0iIGhlaWdodD0iMzYuNzU3MSIgZmlsbD0iI2ZmZmJkMCIgeD0iNTIuNSIgd2lkdGg9IjE1Ij4KICAgICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJoZWlnaHQiIGNhbGNNb2RlPSJzcGxpbmUiIHZhbHVlcz0iNTA7NzA7MzA7NTAiIGtleVRpbWVzPSIwOzAuMzM7MC42NjsxIiBkdXI9IjEiIGtleVNwbGluZXM9IjAuNSAwIDAuNSAxOzAuNSAwIDAuNSAxOzAuNSAwIDAuNSAxIiBiZWdpbj0iLTAuNnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgICAgIDwvcmVjdD4KICAgICAgPHJlY3QgbmctYXR0ci14PSJ7e2NvbmZpZy54NH19IiB5PSIxNSIgbmctYXR0ci13aWR0aD0ie3tjb25maWcud2lkdGh9fSIgaGVpZ2h0PSI2NC4yMTE3IiBmaWxsPSIjOTBmZmI1IiB4PSI3Mi41IiB3aWR0aD0iMTUiPgogICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImhlaWdodCIgY2FsY01vZGU9InNwbGluZSIgdmFsdWVzPSI1MDs3MDszMDs1MCIga2V5VGltZXM9IjA7MC4zMzswLjY2OzEiIGR1cj0iMSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDE7MC41IDAgMC41IDE7MC41IDAgMC41IDEiIGJlZ2luPSIwcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICAgICAgPC9yZWN0PgogICAgPC9nPgogIDwvc3ZnPg==');
 }
 
-#gradebook-container, #gradebook-container * {
+#gradebook-container,
+#gradebook-container * {
   box-sizing: border-box;
 }
 
 #gradebook-container {
-  border-top: 2px solid #464A4C;
-  border-left: 14px solid #464A4C;
+  border-top: 2px solid #464a4c;
+  border-left: 14px solid #464a4c;
   padding: 0.5rem;
 }
 
@@ -86,7 +87,7 @@ div[data-content-gid*=Lesson].powertools-collapse {
 
 #powertools-container h1 {
   font-size: 1.25rem;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   color: black;
   padding: 0.5rem;
   margin: -0.5rem -0.5rem 0.5rem -0.5rem;
@@ -102,7 +103,8 @@ div[data-content-gid*=Lesson].powertools-collapse {
   margin-top: 0.5em;
 }
 
-#gradebook-container table th, #gradebook-container table td {
+#gradebook-container table th,
+#gradebook-container table td {
   border: 1px solid black;
   width: 2.5em;
   text-align: center;
@@ -129,10 +131,11 @@ div[data-content-gid*=Lesson].powertools-collapse {
 }
 
 #gradebook-container table tbody tr:nth-child(2n + 1) {
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 
-#gradebook-container td.CS, #gradebook-container td.EE {
+#gradebook-container td.CS,
+#gradebook-container td.EE {
   background-color: #80ff80 !important;
 }
 
@@ -140,12 +143,13 @@ div[data-content-gid*=Lesson].powertools-collapse {
   font-weight: bold;
 }
 
-#gradebook-container td.CU, #gradebook-container td.In {
+#gradebook-container td.CU,
+#gradebook-container td.In {
   background-color: #ffccd5 !important;
 }
 
 #gradebook-container td.NG {
-  background-color: #CCCCEE !important;
+  background-color: #ccccee !important;
 }
 
 table .Weekly {
@@ -165,51 +169,41 @@ table .Weekly {
   text-decoration: underline;
 }
 
-/*
-
-
-
-
-
-#gradebook-container td.CS, #gradebook-container td.EE {
-  background-color: lightgreen !important;
+.m-coursecontent .callout-download a.forkMe {
+  display: block !important;
+  margin-top: 1em !important;
+  background-color: transparent !important;
+  border: 0 !important;
 }
 
-#gradebook-container td.CS.Weekly {
-  background-color: #70DD80 !important;
+.m-coursecontent .callout-download a.forkMe:hover button {
+  box-shadow: 0 3px 6px 0 rgba(59, 73, 78, 0.25);
 }
 
-#gradebook-container td.EE {
-  font-weight: bold;
+.powertools-github-container {
+  padding-top: 0.5em;
 }
 
-#gradebook-container td.CU, #gradebook-container td.In {
-  background-color: pink !important;
+.powertools-github-container > div {
+  display: flex;
+  align-items: center;
 }
 
-#gradebook-container td.CU.Weekly, #gradebook-container td.In.Weekly {
-  background-color: #EEB0BA !important;
+.powertools-github-container img {
+  margin: auto 0.5em;
 }
 
-#gradebook-container td.NG {
-  background-color: #AAAAAA !important;
-}
-#gradebook-container td.NG.Weekly {
-  background-color: #999999 !important;
+.octocat-spinner {
+  max-width: 32px;
+  max-height: 32px;
 }
 
-#gradebook-container .Weekly {
-  font-weight: bolder;
+a.forkMe button {
+  display: flex;
+  align-items: center;
 }
 
-#gradebook-container th, #gradebook-container td {
-  border: 1px solid black;
-  width: 1.5em;
-  text-align: center;
-  white-space: nowrap;
-  padding: 0.2em 0.5em;
-  font-weight: normal;
-}
-
-
-*/
+/*.forkMe div {
+  margin: 0.5em;
+  display: flex;
+}*/

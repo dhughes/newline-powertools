@@ -177,10 +177,10 @@ function formatGrade(grade) {
   if (grade) {
     if (grade.toLowerCase().indexOf('exceeds') >= 0) {
       return 'EE';
-    } else if (grade.toLowerCase().indexOf('satisfactory') >= 0) {
-      return 'CS';
     } else if (grade.toLowerCase().indexOf('unsatisfactory') >= 0) {
       return 'CU';
+    } else if (grade.toLowerCase().indexOf('satisfactory') >= 0) {
+      return 'CS';
     } else if (grade.toLowerCase().indexOf('incomplete') >= 0) {
       return 'In';
     } else if (grade.toLowerCase().indexOf('not graded') >= 0) {

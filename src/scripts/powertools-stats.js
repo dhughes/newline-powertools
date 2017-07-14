@@ -87,7 +87,7 @@ function getStudentGrade(student) {
       // parse the content and extract the student submissions
       .then(text =>
         Object.assign({}, student, {
-          grade: getAsNode(text).querySelector('#stats > div:nth-child(4) dd h5').textContent
+          grade: getAsNode(text).querySelector('#stats #stats-9 > div:nth-child(4) dd h5').textContent
         })
       )
   );
