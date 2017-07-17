@@ -3,34 +3,25 @@
 
   "name": "Newline Powertools",
   "description": "A plugin that provides useful 'powertools' for working with Newline.",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "icons": {
     "16": "src/img/TIY-logo-thumb-16.png",
     "48": "src/img/TIY-logo-thumb-48.png",
     "128": "src/img/TIY-logo-thumb-128.png"
   },
-  "permissions": [
-    "activeTab",
-    "downloads"
-  ],
-  "web_accessible_resources": [
-    "src/*"
-  ],
+  "permissions": ["activeTab", "downloads"],
+  "web_accessible_resources": ["src/*"],
   "content_scripts": [
     {
-      "matches": [
-        "https://online.theironyard.com/*",
-        "https://newline.theironyard.com/*"
-      ],
-      "js" : [
+      "matches": ["https://online.theironyard.com/*", "https://newline.theironyard.com/*"],
+      "js": [
         "src/scripts/powertools-main.js",
         "src/scripts/powertools-render-reports.js",
         "src/scripts/powertools-stats.js",
-        "src/scripts/powertools-sync-to-github.js"
+        "src/scripts/powertools-sync-to-github.js",
+        "src/scripts/powertools-text-select.js"
       ],
-      "css" : [
-        "src/styles/tiyo-powertools.css"
-      ],
+      "css": ["src/styles/tiyo-powertools.css"],
       "run_at": "document_end"
     }
   ]
