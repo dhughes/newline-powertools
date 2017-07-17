@@ -1,4 +1,4 @@
-(function() {
+(function () {
   renderReports();
 })();
 
@@ -56,7 +56,7 @@ function renderLoadingGradebook() {
   );
 }
 
-function renderGradebook() {
+function renderGradebook(sortMethod) {
   resetGradebookData();
 
   // get the gradebook container
@@ -69,8 +69,21 @@ function renderGradebook() {
   } else {
     data = JSON.parse(data);
     console.log(data);
+    if (sortMethod) {
+      // sort data
+      data.students.sort(sortMethod);
+    }
+    //localStorage.setItem('powertools-gradebook', data);
     gradebookContainer.appendChild(getAsNode(renderGradebookTable(data.students, data.projects)));
+    gradebookContainer.querySelector('.gradeHeader').addEventListener('click', e => renderGradebook(sortStudentsGrade))
   }
+}
+
+
+const sortStudentsGrade = (a, b) => {
+  if (a.grade > b.grade) return 1;
+  else if (a.grade < b.grade) return -1
+  else return 0;
 }
 
 function renderGradebookTable(students, projects) {
@@ -80,7 +93,7 @@ function renderGradebookTable(students, projects) {
         <thead>
           <tr>
             <th></th>
-            <th>Grade</th>
+            <th><a href="javascript:" class="gradeHeader">Grade</a></th>
             ${renderGradebookProjectsHeaders(projects)}
           </tr>
         </thead>
@@ -135,11 +148,11 @@ function createContainer() {
 function renderGradebookProjectsHeaders(projects) {
   return projects
     .map(
-      project =>
-        `<th title="${project.name}" class="${project.type}"><a href="${project.link}" target="_blank">${project.name.substr(
-          0,
-          1
-        )} </th>`
+    project =>
+      `<th title="${project.name}" class="${project.type}"><a href="${project.link}" target="_blank">${project.name.substr(
+        0,
+        1
+      )} </th>`
     )
     .join('');
 
@@ -149,8 +162,8 @@ function renderGradebookProjectsHeaders(projects) {
 function renderGradebookStudentRows(students, projects) {
   return students
     .map(
-      student =>
-        `<tr>
+    student =>
+      `<tr>
           <td><a href="${student.link}">${student.name}</a></td>
           <td>${student.grade}</td>
           ${renderGradebookStudentProjectCells(student, projects)}
