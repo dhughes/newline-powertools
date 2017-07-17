@@ -71,17 +71,14 @@ function renderGradebook(sortMethod, reverse) {
     console.log(data);
     if (sortMethod) {
       // sort data
-      console.log("sorting")
       data.students.sort(sortMethod);
     }
     if (reverse) {
-      console.log("reversing")
       data.students.reverse();
     }
     //localStorage.setItem('powertools-gradebook', data);
     gradebookContainer.appendChild(getAsNode(renderGradebookTable(data.students, data.projects)));
     gradebookContainer.querySelector('.nameHeader').addEventListener('click', (e) => {
-      console.log("clicked", reverse);
       renderGradebook(sortStudentName, !reverse);
     });
     gradebookContainer.querySelector('.gradeHeader').addEventListener('click', (e) => {
