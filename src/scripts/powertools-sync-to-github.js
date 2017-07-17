@@ -10,14 +10,17 @@ const octocatSpinner =
   //const apiRoot = 'http://localhost:3000';
 
   // are we viewing a project in admin or student view?
-  if (!location.href.match(/.*?\/projects\/\d*$/)) return;
+  if (!location.href.match(/.*?\/(projects|objective_lessons|supplementals|activities)\/\d*$/)) return;
 
   // do we have any downloads sections?
   const downloadSections = document.querySelectorAll('.callout-download');
 
   if (downloadSections) {
     // get the project name
-    const projectName = document.querySelector('.m-coursecontentbookend-title').textContent.trim();
+    const projectName = document
+      .querySelector('.m-coursecontentbookend-title, .m-coursecontentheader-title')
+      .textContent.replace(/(Lecture:|Activity:|Lesson:|Supplemental:)|(\(Completed\))/g, '')
+      .trim();
 
     // for each download section, get the associated links
     downloadSections.forEach((downloadSection, i) => {
