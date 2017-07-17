@@ -75,14 +75,20 @@ function renderGradebook(sortMethod) {
     }
     //localStorage.setItem('powertools-gradebook', data);
     gradebookContainer.appendChild(getAsNode(renderGradebookTable(data.students, data.projects)));
+    gradebookContainer.querySelector('.nameHeader').addEventListener('click', e => renderGradebook(sortStudentName))
+  
     gradebookContainer.querySelector('.gradeHeader').addEventListener('click', e => renderGradebook(sortStudentsGrade))
   }
 }
 
-
 const sortStudentsGrade = (a, b) => {
   if (a.grade > b.grade) return 1;
   else if (a.grade < b.grade) return -1
+  else return 0;
+}
+const sortStudentName = (a ,b) => {
+   if (a.name > b.name) return 1;
+  else if (a.name < b.name) return -1
   else return 0;
 }
 
@@ -92,7 +98,7 @@ function renderGradebookTable(students, projects) {
       <table>
         <thead>
           <tr>
-            <th></th>
+            <th><a href="javascript:" class="nameHeader">Name</a></th>
             <th><a href="javascript:" class="gradeHeader">Grade</a></th>
             ${renderGradebookProjectsHeaders(projects)}
           </tr>
