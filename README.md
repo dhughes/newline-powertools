@@ -7,12 +7,12 @@ Traditionally, students downloaded files for their homework projects as zip file
 
 To help streamline this, this extension works with a [Node.js/Express based API](https://github.com/dhughes/newline-powertools-api) (deployed to AWS Lambda) to automatically create and maintain Github repositories based on project download files. Students are then presented with a "Fork on Github" button that they can use to quickly fork the project, clone it locally, and get to work.
 
-![https://raw.githubusercontent.com/dhughes/newline-powertools/master/images/sync-to-github.gif](Content being synced to Github)
+![Content being synced to Github](https://raw.githubusercontent.com/dhughes/newline-powertools/master/images/sync-to-github.gif)
 
 ## Gradebook Improvements
 This extension consolidates student grade information into a traditional gradebook format. It works by identifying and scraping student data from the Newline administrative section. This information is cached in local storage and used to optionally display the gradebook in the Newline administration interface.
 
-![https://raw.githubusercontent.com/dhughes/newline-powertools/master/images/gradebook.png](Gradebook presentation)
+![Gradebook presentation](https://raw.githubusercontent.com/dhughes/newline-powertools/master/images/gradebook.png)
 
 ## Content (Re)styling and Collapsing
 Some parts of Newline can be a bit hard to understand visually. For example, content, activities, etc, are all grouped together and difficult to distinguish. This extension provides additional styles that make it a bit easier to understand.
@@ -21,8 +21,8 @@ Additionally, the plugin provides the ability to double click on content items t
 
 Before:
 
-![https://raw.githubusercontent.com/dhughes/newline-powertools/master/images/content-before.png](Old and busted)
+![Old and busted](https://raw.githubusercontent.com/dhughes/newline-powertools/master/images/content-before.png)
 
 After
 
-![https://raw.githubusercontent.com/dhughes/newline-powertools/master/images/collapse-content.gif](New Hotness)
+![New Hotness](https://raw.githubusercontent.com/dhughes/newline-powertools/master/images/collapse-content.gif)
