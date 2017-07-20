@@ -56,7 +56,7 @@ function renderLoadingGradebook() {
   );
 }
 
-function renderGradebook(sortMethod) {
+function renderGradebook(sortMethod, reverse) {
   resetGradebookData();
 
   // get the gradebook container
@@ -73,10 +73,17 @@ function renderGradebook(sortMethod) {
       // sort data
       data.students.sort(sortMethod);
     }
+    if (reverse) {
+      data.students.reverse();
+    }
     //localStorage.setItem('powertools-gradebook', data);
     gradebookContainer.appendChild(getAsNode(renderGradebookTable(data.students, data.projects)));
-    gradebookContainer.querySelector('.nameHeader').addEventListener('click', e => renderGradebook(sortStudentName));
-    gradebookContainer.querySelector('.gradeHeader').addEventListener('click', e => renderGradebook(sortStudentsGrade));
+    gradebookContainer.querySelector('.nameHeader').addEventListener('click', (e) => {
+      renderGradebook(sortStudentName, !reverse);
+    });
+    gradebookContainer.querySelector('.gradeHeader').addEventListener('click', (e) => {
+      renderGradebook(sortStudentsGrade,!reverse);
+    });
   }
 }
 
@@ -85,8 +92,8 @@ const sortStudentsGrade = (a, b) => {
   else if (a.grade < b.grade) return -1;
   else return 0;
 }
-const sortStudentName = (a ,b) => {
-   if (a.name > b.name) return 1;
+const sortStudentName = (a, b) => {
+  if (a.name > b.name) return 1;
   else if (a.name < b.name) return -1;
   else return 0;
 }
