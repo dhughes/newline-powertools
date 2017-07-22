@@ -7,12 +7,12 @@ Traditionally, students downloaded files for their homework projects as zip file
 
 To help streamline this, this extension works with a [Node.js/Express based API](https://github.com/dhughes/newline-powertools-api) (deployed to AWS Lambda) to automatically create and maintain Github repositories based on project download files. Students are then presented with a "Fork on Github" button that they can use to quickly fork the project, clone it locally, and get to work.
 
-![Content being synced to Github](../blob/master/images/sync-to-github.gif?raw=true)
+![Content being synced to Github](../master/images/sync-to-github.gif?raw=true)
 
 ## Gradebook Improvements
 This extension consolidates student grade information into a traditional gradebook format. It works by identifying and scraping student data from the Newline administrative section. This information is cached in local storage and used to optionally display the gradebook in the Newline administration interface.
 
-![Gradebook presentation](../blob/master/images/gradebook.png?raw=true)
+![Gradebook presentation](../master/images/gradebook.png?raw=true)
 
 ## Content (Re)styling and Collapsing
 Some parts of Newline can be a bit hard to understand visually. For example, content, activities, etc, are all grouped together and difficult to distinguish. This extension provides additional styles that make it a bit easier to understand.
@@ -21,8 +21,8 @@ Additionally, the plugin provides the ability to double click on content items t
 
 Before:
 
-![Old and busted](../blob/master/images/content-before.png?raw=true)
+![Old and busted](../master/images/content-before.png?raw=true)
 
 After
 
-![New Hotness](../blob/master/images/collapse-content.gif?raw=true)
+![New Hotness](../master/images/collapse-content.gif?raw=true)
