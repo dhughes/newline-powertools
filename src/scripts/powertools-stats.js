@@ -94,11 +94,17 @@ function getStudentGrade(student) {
 }
 
 function getStudentSubmissions(dom) {
-  return Array.from(dom.querySelectorAll('.tab-content table tbody tr')).map(row => ({
-    name: row.querySelector('td').textContent,
-    link: row.querySelector('td:last-child li:last-child a').href,
-    status: row.querySelector('td:last-child li:last-child label').textContent.trim()
-  }));
+  return (
+    Array.from(dom.querySelectorAll('.tab-content table tbody tr'))
+      // filter out non-submissions
+      .filter(row => row.querySelector('td:last-child li:last-child') != null)
+      // map submissions to objects
+      .map(row => ({
+        name: row.querySelector('td').textContent,
+        link: row.querySelector('td:last-child li:last-child a').href,
+        status: row.querySelector('td:last-child li:last-child label').textContent.trim()
+      }))
+  );
 }
 
 function getStudents(dom) {
