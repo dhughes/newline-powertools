@@ -85,11 +85,20 @@ function getStudentGrade(student) {
         }
       })
       // parse the content and extract the student submissions
-      .then(text =>
-        Object.assign({}, student, {
-          grade: getAsNode(text).querySelector('#stats #stats-9 > div:nth-child(4) dd h5').textContent
-        })
-      )
+      .then(text => {
+        // get the set of grades for this student
+        const grades = Array.from(
+          getAsNode(text).querySelectorAll('.objective-card .row div:nth-child(4)  dd h5')
+        ).map(grade => parseFloat(grade.textContent));
+
+        // average the grades
+        const average = (grades.reduce((acc, grade) => acc + grade, 0) / grades.length).toFixed(1);
+
+        return Object.assign({}, student, {
+          grades: grades,
+          grade: average
+        });
+      })
   );
 }
 

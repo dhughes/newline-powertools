@@ -1,4 +1,4 @@
-(function () {
+(function() {
   renderReports();
 })();
 
@@ -78,11 +78,11 @@ function renderGradebook(sortMethod, reverse) {
     }
     //localStorage.setItem('powertools-gradebook', data);
     gradebookContainer.appendChild(getAsNode(renderGradebookTable(data.students, data.projects)));
-    gradebookContainer.querySelector('.nameHeader').addEventListener('click', (e) => {
+    gradebookContainer.querySelector('.nameHeader').addEventListener('click', e => {
       renderGradebook(sortStudentName, !reverse);
     });
-    gradebookContainer.querySelector('.gradeHeader').addEventListener('click', (e) => {
-      renderGradebook(sortStudentsGrade,!reverse);
+    gradebookContainer.querySelector('.gradeHeader').addEventListener('click', e => {
+      renderGradebook(sortStudentsGrade, !reverse);
     });
   }
 }
@@ -91,12 +91,12 @@ const sortStudentsGrade = (a, b) => {
   if (a.grade > b.grade) return 1;
   else if (a.grade < b.grade) return -1;
   else return 0;
-}
+};
 const sortStudentName = (a, b) => {
   if (a.name > b.name) return 1;
   else if (a.name < b.name) return -1;
   else return 0;
-}
+};
 
 function renderGradebookTable(students, projects) {
   return `
@@ -160,11 +160,11 @@ function createContainer() {
 function renderGradebookProjectsHeaders(projects) {
   return projects
     .map(
-    project =>
-      `<th title="${project.name}" class="${project.type}"><a href="${project.link}" target="_blank">${project.name.substr(
-        0,
-        1
-      )} </th>`
+      project =>
+        `<th title="${project.name}" class="${project.type}"><a href="${project.link}" target="_blank">${project.name.substr(
+          0,
+          1
+        )} </th>`
     )
     .join('');
 
@@ -174,10 +174,15 @@ function renderGradebookProjectsHeaders(projects) {
 function renderGradebookStudentRows(students, projects) {
   return students
     .map(
-    student =>
-      `<tr>
+      student =>
+        `<tr>
           <td><a href="${student.link}">${student.name}</a></td>
-          <td>${student.grade}</td>
+          <td class="gradeCell">
+            <span>
+              ${student.grade}%
+            </span>
+            ${student.grades.reduce((acc, grade) => acc + `<span>${grade}%</span>`, '')}
+          </td>
           ${renderGradebookStudentProjectCells(student, projects)}
         </tr>`
     )

@@ -203,6 +203,25 @@ a.forkMe button {
   align-items: center;
 }
 
+.gradeCell span:first-child {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.gradeCell span {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 33%;
+  text-align: left;
+  padding: 0 0.5em;
+  font-size: 0.9em;
+  border-right: 1px solid gray;
+}
+
+.gradeCell span:last-child {
+  border-right: none;
+}
+
 /*.forkMe div {
   margin: 0.5em;
   display: flex;
