@@ -85,6 +85,32 @@ function renderGradebook(sortMethod, reverse) {
       renderGradebook(sortStudentsGrade, !reverse);
     });
   }
+
+  console.log(document.querySelectorAll('.gradeCell'));
+
+  document.querySelectorAll('.gradeCell').forEach(gradeCell =>
+    gradeCell.addEventListener('dblclick', function(event) {
+      let selectedRow = event.target.closest('tr');
+      if (selectedRow.className.indexOf('onlyVisible') === -1) {
+        // hide all rows
+        Array.from(document.querySelectorAll('.gradebook-data table tbody tr')).forEach(
+          row => (row.className = 'hidden')
+        );
+
+        // except this one
+        event.target.closest('tr').className += 'onlyVisible';
+      } else {
+        // show all rows
+        Array.from(document.querySelectorAll('.gradebook-data table tbody tr')).forEach(row => (row.className = ''));
+      }
+    })
+  );
+
+  /*
+  .addEventListener('dblclick', function(event) {
+    console.log(event.target);
+  });
+   */
 }
 
 const sortStudentsGrade = (a, b) => {
@@ -161,10 +187,9 @@ function renderGradebookProjectsHeaders(projects) {
   return projects
     .map(
       project =>
-        `<th title="${project.name}" class="${project.type}"><a href="${project.link}" target="_blank">${project.name.substr(
-          0,
-          1
-        )} </th>`
+        `<th title="${project.name}" class="${project.type} projectHeader">
+          <a href="${project.link}" target="_blank">${project.name}
+        </th>`
     )
     .join('');
 

@@ -222,6 +222,10 @@ a.forkMe button {
   border-right: none;
 }
 
+.projectHeader a {
+  writing-mode: tb-rl;
+}
+
 /*.forkMe div {
   margin: 0.5em;
   display: flex;
