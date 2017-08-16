@@ -222,8 +222,14 @@ a.forkMe button {
   border-right: none;
 }
 
-.projectHeader a {
+.projectHeader a,
+.gradeHeader span {
   writing-mode: tb-rl;
+  text-transform: capitalize;
+}
+
+.gradeCell.total {
+  font-weight: bold !important;
 }
 
 /*.forkMe div {

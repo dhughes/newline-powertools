@@ -68,7 +68,7 @@ function renderGradebook(sortMethod, reverse) {
     gradebookContainer.appendChild(getAsNode(`<div class="gradebook-data">Gradebook data not loaded!</div>`));
   } else {
     data = JSON.parse(data);
-    console.log(data);
+    //console.log(data);
     if (sortMethod) {
       // sort data
       data.students.sort(sortMethod);
@@ -86,7 +86,7 @@ function renderGradebook(sortMethod, reverse) {
     });
   }
 
-  console.log(document.querySelectorAll('.gradeCell'));
+  //console.log(document.querySelectorAll('.gradeCell'));
 
   document.querySelectorAll('.gradeCell').forEach(gradeCell =>
     gradeCell.addEventListener('dblclick', function(event) {
@@ -125,13 +125,17 @@ const sortStudentName = (a, b) => {
 };
 
 function renderGradebookTable(students, projects) {
+  // <th rowspan="2"><a href="javascript:" class="gradeHeader">Grade</a></th>
   return `
     <div class="gradebook-data">
       <table>
         <thead>
           <tr>
-            <th><a href="javascript:" class="nameHeader">Name</a></th>
-            <th><a href="javascript:" class="gradeHeader">Grade</a></th>
+            <th rowspan="2"><a href="javascript:" class="nameHeader">Name</a></th>
+            ${renderGradesHeaders(Object.keys(students[0].grades))}
+            ${renderGradebookUnitHeaders(projects)}
+          </tr>
+          <tr>
             ${renderGradebookProjectsHeaders(projects)}
           </tr>
         </thead>
@@ -141,6 +145,46 @@ function renderGradebookTable(students, projects) {
       </table>
     </div>
   `;
+}
+
+function renderGradesHeaders(units) {
+  return units
+    .map(
+      unit =>
+        `<th class="gradeHeader projectHeader" rowspan="2">
+          <span>${unit}</span>
+        </th>`
+    )
+    .join('');
+}
+
+function renderGradebookUnitHeaders(projects) {
+  const units = projects.reduce((acc, project) => {
+    // this is the current unit for this project
+    let projectUnit = project.unit;
+
+    let matchingUnit = acc.filter(unit => unit.unit === projectUnit);
+
+    if (matchingUnit.length) {
+      matchingUnit[0].count++;
+    } else {
+      acc.push({
+        unit: projectUnit,
+        count: 1
+      });
+    }
+
+    return acc;
+  }, []);
+
+  return units
+    .map(
+      unit =>
+        `<th class="unit projectHeader" colspan="${unit.count}">
+          ${unit.unit}
+        </th>`
+    )
+    .join('');
 }
 
 function createGradebookContainer() {
@@ -197,19 +241,32 @@ function renderGradebookProjectsHeaders(projects) {
 }
 
 function renderGradebookStudentRows(students, projects) {
+  /*
+
+  <span>
+    ${student.grade}%
+  </span>
+  ${student.grades.reduce((acc, grade) => acc + `<span>${grade}%</span>`, '')}
+   */
   return students
     .map(
       student =>
         `<tr>
           <td><a href="${student.link}">${student.name}</a></td>
-          <td class="gradeCell">
-            <span>
-              ${student.grade}%
-            </span>
-            ${student.grades.reduce((acc, grade) => acc + `<span>${grade}%</span>`, '')}
-          </td>
+          ${renderStudentGrades(student.grades)}
           ${renderGradebookStudentProjectCells(student, projects)}
         </tr>`
+    )
+    .join('');
+}
+
+function renderStudentGrades(grades) {
+  return Object.keys(grades)
+    .map(
+      key => `
+      <td class="gradeCell ${key}">
+        ${grades[key]}%
+      </td>`
     )
     .join('');
 }
