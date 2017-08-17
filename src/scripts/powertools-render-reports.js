@@ -115,7 +115,7 @@ function renderGradebook(sortMethod, reverse) {
 
   //console.log(document.querySelectorAll('.gradeCell'));
 
-  document.querySelectorAll('.gradeCell').forEach(gradeCell =>
+  document.querySelectorAll('tbody td').forEach(gradeCell =>
     gradeCell.addEventListener('dblclick', function(event) {
       let selectedRow = event.target.closest('tr');
       if (selectedRow.className.indexOf('onlyVisible') === -1) {
