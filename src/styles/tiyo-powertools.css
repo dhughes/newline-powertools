@@ -232,6 +232,10 @@ a.forkMe button {
   font-weight: bold !important;
 }
 
+.sortHeader:hover span {
+  text-decoration: underline;
+}
+
 /*.forkMe div {
   margin: 0.5em;
   display: flex;

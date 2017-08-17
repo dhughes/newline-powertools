@@ -78,12 +78,39 @@ function renderGradebook(sortMethod, reverse) {
     }
     //localStorage.setItem('powertools-gradebook', data);
     gradebookContainer.appendChild(getAsNode(renderGradebookTable(data.students, data.projects)));
-    gradebookContainer.querySelector('.nameHeader').addEventListener('click', e => {
-      renderGradebook(sortStudentName, !reverse);
+
+    // sort feature
+    Array.from(gradebookContainer.querySelectorAll('.sortHeader')).forEach(header => {
+      header.addEventListener('click', event => {
+        const th = event.target.closest('th');
+        renderGradebook(sortStudentProperty(th.getAttribute('data-sortBy'), th.getAttribute('data-type')), !reverse);
+      });
     });
-    gradebookContainer.querySelector('.gradeHeader').addEventListener('click', e => {
-      renderGradebook(sortStudentsGrade, !reverse);
-    });
+
+    // gradebookContainer.querySelector('.nameHeader').addEventListener('click', e => {
+    //   renderGradebook(sortStudentName, !reverse);
+    // });
+    // gradebookContainer.querySelector('.gradeHeader').addEventListener('click', e => {
+    //   renderGradebook(sortStudentsGrade, !reverse);
+    // });
+  }
+
+  function sortStudentProperty(property, type) {
+    return (a, b) => {
+      // read the property specified
+      let aProp = eval(`a.${property}`);
+      let bProp = eval(`b.${property}`);
+
+      if (type === 'numeric') {
+        aProp = parseFloat(aProp);
+        bProp = parseFloat(bProp);
+      }
+
+      // sort based on the property
+      if (aProp > bProp) return 1;
+      else if (aProp < bProp) return -1;
+      else return 0;
+    };
   }
 
   //console.log(document.querySelectorAll('.gradeCell'));
@@ -113,16 +140,17 @@ function renderGradebook(sortMethod, reverse) {
    */
 }
 
-const sortStudentsGrade = (a, b) => {
-  if (a.grade > b.grade) return 1;
-  else if (a.grade < b.grade) return -1;
-  else return 0;
-};
-const sortStudentName = (a, b) => {
-  if (a.name > b.name) return 1;
-  else if (a.name < b.name) return -1;
-  else return 0;
-};
+// const sortStudentsGrade = (a, b) => {
+//   if (a.grade > b.grade) return 1;
+//   else if (a.grade < b.grade) return -1;
+//   else return 0;
+// };
+//
+// const sortStudentName = (a, b) => {
+//   if (a.name > b.name) return 1;
+//   else if (a.name < b.name) return -1;
+//   else return 0;
+// };
 
 function renderGradebookTable(students, projects) {
   // <th rowspan="2"><a href="javascript:" class="gradeHeader">Grade</a></th>
@@ -131,7 +159,7 @@ function renderGradebookTable(students, projects) {
       <table>
         <thead>
           <tr>
-            <th rowspan="2"><a href="javascript:" class="nameHeader">Name</a></th>
+            <th rowspan="2" class="nameHeader sortHeader" data-sortBy="name" data-type="string"><span>Name</span></th>
             ${renderGradesHeaders(Object.keys(students[0].grades))}
             ${renderGradebookUnitHeaders(projects)}
           </tr>
@@ -151,7 +179,7 @@ function renderGradesHeaders(units) {
   return units
     .map(
       unit =>
-        `<th class="gradeHeader projectHeader" rowspan="2">
+        `<th class="gradeHeader projectHeader sortHeader" data-sortBy="grades['${unit}']" data-type="numeric" rowspan="2">
           <span>${unit}</span>
         </th>`
     )
