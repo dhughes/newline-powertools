@@ -58,6 +58,7 @@ function loadGradebookData() {
             )
           )
             // get student grades
+            // note: I think this can be removed due to the use of calculateScores() below
             .then(students => Promise.all(students.map(student => getStudentGrade(student))))
             // collect all of this together
             .then(students => ({
@@ -78,30 +79,42 @@ function loadGradebookData() {
 
 function calculateScores(results) {
   // calculate the total number of points for each unit
-  const unitValues = results.projects.reduce(
-    (acc, project) => {
-      // all units start out with zero points
-      if (!acc[project.unit]) acc[project.unit] = 0;
+  const unitValues = results.projects.reduce((acc, project) => {
+    // all units start out with zero points
+    if (!acc[project.courseId]) acc[project.courseId] = 0;
 
-      acc[project.unit] += project.value;
-      acc.total += project.value;
+    acc[project.courseId] += project.value;
 
-      return acc;
-    },
-    { total: 0 }
-  );
+    return acc;
+  }, {});
+
+  // make a lookup mapping between course id and the name. This is obnoxious,
+  // but necessariy as I've been changing what I want to do with the data I
+  // have without restructuring the data.
+  const courseMapping = results.projects.reduce((acc, project) => {
+    // all units start out with zero points
+    if (!acc[project.courseId]) acc[project.courseId] = project.unit;
+
+    return acc;
+  }, {});
 
   // calculate the scores for each student
   results.students.forEach(student => {
     // the student's grades
-    const grades = { total: 0 };
+    const grades = {};
+
+    // totalPossible: student.courses.map(course => unitValues[course]).reduce((acc, value) => acc + value)
 
     // get all student submissions
     const submissions = student.submissions;
 
     results.projects.forEach(project => {
       // does this unit exist in the student's grades yet?
-      if (!grades[project.unit]) grades[project.unit] = 0;
+      if (!grades[project.courseId])
+        grades[project.courseId] = student.courses.indexOf(project.courseId) !== -1 ? 0 : null;
+
+      // if the student isn't taking this course continue on without doing anything more for this project.
+      if (student.courses.indexOf(project.courseId) === -1) return;
 
       // get the student's submission for this project
       const submission = submissions.filter(studentSubmission => studentSubmission.name === project.name);
@@ -110,17 +123,27 @@ function calculateScores(results) {
         (submission[0].status === 'Complete and satisfactory' || submission[0].status === 'Exceeds expectations')
       ) {
         // the student submitted this and it was accepted
-        grades.total += project.value;
-        grades[project.unit] += project.value;
+        grades[project.courseId] += project.value;
       }
     });
 
+    const totalPossible = student.courses.map(course => unitValues[course]).reduce((acc, value) => acc + value);
+    let total = 0;
     // calculate the student's percentages
+    const studentGrades = {};
+
     Object.keys(grades).forEach(key => {
-      grades[key] = (grades[key] / unitValues[key] * 100).toFixed(1);
+      if (grades[key] !== null) {
+        total += grades[key];
+        studentGrades[courseMapping[key]] = (grades[key] / unitValues[key] * 100).toFixed(1);
+      } else {
+        studentGrades[courseMapping[key]] = null;
+      }
     });
 
-    student.grades = grades;
+    studentGrades.total = (total / totalPossible * 100).toFixed(1);
+
+    student.grades = studentGrades;
   });
 
   /*
@@ -229,13 +252,15 @@ function getStudents(dom) {
   return Array.from(dom.querySelectorAll('#members tbody tr'))
     .map(row => {
       // is this student disabled?
-
       try {
         if (!row.querySelector('.badge-danger')) {
           return {
             name: row.querySelector('a').textContent,
             id: parseInt(row.querySelector('a').href.match(/^.*\/cohort_memberships\/(\d*).*?$/)[1]),
-            link: row.querySelector('a').href
+            link: row.querySelector('a').href,
+            courses: Array.from(row.querySelectorAll("input[type='checkbox']:checked")).map(checkbox =>
+              parseInt(checkbox.value)
+            )
           };
         }
       } catch (e) {
@@ -258,6 +283,7 @@ function getProjects(doms) {
   const projectNodes = doms.map(dom => Array.from(dom.querySelectorAll('div[data-content-gid*=Project]')));
 
   return [].concat(...projectNodes).map(projectNode => ({
+    courseId: parseInt(projectNode.closest('body').querySelector('.edit_cohort_course').id.match(/.*?_([0-9]+)/)[1]),
     name: projectNode.querySelector('dd').textContent.trim(),
     unit: projectNode
       .closest('.tab-pane.active')

@@ -87,12 +87,11 @@ function renderGradebook(sortMethod, reverse) {
       });
     });
 
-    // gradebookContainer.querySelector('.nameHeader').addEventListener('click', e => {
-    //   renderGradebook(sortStudentName, !reverse);
-    // });
-    // gradebookContainer.querySelector('.gradeHeader').addEventListener('click', e => {
-    //   renderGradebook(sortStudentsGrade, !reverse);
-    // });
+    Array.from(document.querySelectorAll('.unit')).forEach(unitHeader => {
+      unitHeader.addEventListener('click', event => {
+        console.log(event.target.getAttribute('data-unit'));
+      });
+    });
   }
 
   function sortStudentProperty(property, type) {
@@ -104,6 +103,9 @@ function renderGradebook(sortMethod, reverse) {
       if (type === 'numeric') {
         aProp = parseFloat(aProp);
         bProp = parseFloat(bProp);
+
+        if (isNaN(aProp)) aProp = -100;
+        if (isNaN(bProp)) bProp = -100;
       }
 
       // sort based on the property
@@ -161,6 +163,10 @@ function renderGradebookTable(students, projects) {
           <tr>
             <th rowspan="2" class="nameHeader sortHeader" data-sortBy="name" data-type="string"><span>Name</span></th>
             ${renderGradesHeaders(Object.keys(students[0].grades))}
+            <th rowspan="2" class="gradeHeader projectHeader"><span>Points Needed</span></th>
+            <th rowspan="2" class="gradeHeader projectHeader"><span>Ungraded</span></th>
+            <th rowspan="2" class="gradeHeader projectHeader"><span>Points Earned</span></th>
+            <th rowspan="2" class="gradeHeader projectHeader"><span>Total Required (to 80%)</span></th>
             ${renderGradebookUnitHeaders(projects)}
           </tr>
           <tr>
@@ -208,7 +214,7 @@ function renderGradebookUnitHeaders(projects) {
   return units
     .map(
       unit =>
-        `<th class="unit projectHeader" colspan="${unit.count}">
+        `<th class="unit projectHeader" colspan="${unit.count}" data-unit="${unit.unit}">
           ${unit.unit}
         </th>`
     )
@@ -259,7 +265,7 @@ function renderGradebookProjectsHeaders(projects) {
   return projects
     .map(
       project =>
-        `<th title="${project.name}" class="${project.type} projectHeader">
+        `<th title="${project.name}" class="${project.type} projectHeader ${project.unit.replace(/\W/g, '')}">
           <a href="${project.link}" target="_blank">${project.name}
         </th>`
     )
@@ -282,32 +288,88 @@ function renderGradebookStudentRows(students, projects) {
         `<tr>
           <td><a href="${student.link}">${student.name}</a></td>
           ${renderStudentGrades(student.grades)}
+          ${renderStudentPointsNeeded(student, projects)}
           ${renderGradebookStudentProjectCells(student, projects)}
         </tr>`
     )
     .join('');
 }
 
+function renderStudentPointsNeeded(student, projects) {
+  console.log(student);
+  let points = projects
+    // filter to the student's own required projects
+    .filter(project => student.courses.indexOf(project.courseId) !== -1)
+    // reduce these to the points required and earned
+    .reduce(
+      (acc, project) => {
+        // add this to the total required
+        acc.required += project.value;
+        // has the student successfully completed this project?
+        acc.earned +=
+          student.submissions.filter(
+            submission =>
+              project.name === submission.name &&
+              (submission.status === 'Complete and satisfactory' || submission.status === 'Exceeds expectations')
+          ).length * project.value;
+        // are there any ungraded submissions?
+        acc.ungraded +=
+          student.submissions.filter(
+            submission => project.name === submission.name && submission.status === 'Not graded'
+          ).length * project.value;
+
+        return acc;
+      },
+      { earned: 0, required: 0, ungraded: 0 }
+    );
+
+  let actuallyRequired = Math.floor(points.required * 0.8);
+  let needed = actuallyRequired - points.earned;
+
+  return `
+    <td>${needed <= 0 ? 0 : needed}</td>
+    <td>${points.ungraded}</td>
+    <td>${points.earned}</td>
+    <td>${actuallyRequired}</td>`;
+}
+
 function renderStudentGrades(grades) {
   return Object.keys(grades)
-    .map(
-      key => `
-      <td class="gradeCell ${key}">
-        ${grades[key]}%
-      </td>`
-    )
+    .map(key => {
+      if (grades[key] !== null) {
+        return `
+            <td class="gradeCell ${key}">
+              ${grades[key]}%
+            </td>`;
+      } else {
+        return `
+            <td class="gradeCell ${key} null">
+              --
+            </td>`;
+      }
+    })
     .join('');
 }
 
 function renderGradebookStudentProjectCells(student, projects) {
   return projects
     .map(project => {
-      const submission = student.submissions.find(prj => prj.name === project.name);
-      if (submission) {
-        const grade = formatGrade(submission.status);
-        return `<td class="${grade} ${project.type}"><a class="submission" href="${submission.link}">${grade}</a></td>`;
+      if (student.courses.indexOf(project.courseId) !== -1) {
+        const submission = student.submissions.find(prj => prj.name === project.name);
+        if (submission) {
+          const grade = formatGrade(submission.status);
+          return `<td class="${grade} ${project.type} ${project.unit.replace(
+            /\W/g,
+            ''
+          )}"><a class="submission" href="${submission.link}">${grade}</a></td>`;
+        } else {
+          return `<td class="${project.type} ${project.unit.replace(/\W/g, '')}"></td>`;
+        }
       } else {
-        return `<td class="${project.type}"></td>`;
+        return `
+        <td class="${project.type} ${project.unit.replace(/\W/g, '')} null">
+          --
+        </td>`;
       }
     })
     .join('');

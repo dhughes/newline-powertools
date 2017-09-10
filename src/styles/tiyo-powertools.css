@@ -152,9 +152,64 @@ div[data-content-gid*=Lesson].powertools-collapse {
   background-color: #ccccee !important;
 }
 
+#gradebook-container table thead .FrontEndFundamentals {
+  background-color: rgba(255, 0, 0, 0.15);
+}
+
+#gradebook-container table thead .BackEndFundamentalsv21 {
+  background-color: rgba(255, 255, 0, 0.15);
+}
+
+#gradebook-container table thead .LanguageSpecializationJavaandSpring {
+  background-color: rgba(0, 255, 255, 0.15);
+}
+
+#gradebook-container table thead .LanguageSpecializationReactJS {
+  background-color: rgba(0, 0, 255, 0.15);
+}
+
+#gradebook-container table thead .LanguageSpecializationRubyonRails {
+  background-color: rgba(255, 0, 255, 0.15);
+}
+
 table .Weekly {
   background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
   font-size: 1.1em;
+}
+
+#gradebook-container table tr .FrontEndFundamentals {
+  border-left: 4px solid black;
+}
+#gradebook-container table tr .FrontEndFundamentals ~ .FrontEndFundamentals {
+  border: 1px solid black;
+}
+
+#gradebook-container table tr .BackEndFundamentalsv21 {
+  border-left: 4px solid black;
+}
+#gradebook-container table tr .BackEndFundamentalsv21 ~ .BackEndFundamentalsv21 {
+  border: 1px solid black;
+}
+
+#gradebook-container table tr .LanguageSpecializationJavaandSpring {
+  border-left: 4px solid black;
+}
+#gradebook-container table tr .LanguageSpecializationJavaandSpring ~ .LanguageSpecializationJavaandSpring {
+  border: 1px solid black;
+}
+
+#gradebook-container table tr .LanguageSpecializationReactJS {
+  border-left: 4px solid black;
+}
+#gradebook-container table tr .LanguageSpecializationReactJS ~ .LanguageSpecializationReactJS {
+  border: 1px solid black;
+}
+
+#gradebook-container table tr .LanguageSpecializationRubyonRails {
+  border-left: 4px solid black;
+}
+#gradebook-container table tr .LanguageSpecializationRubyonRails ~ .LanguageSpecializationRubyonRails {
+  border: 1px solid black;
 }
 
 .off .gradebook-data {
@@ -220,6 +275,10 @@ a.forkMe button {
 
 .gradeCell span:last-child {
   border-right: none;
+}
+
+.null {
+  background-color: #999999;
 }
 
 .projectHeader a,
